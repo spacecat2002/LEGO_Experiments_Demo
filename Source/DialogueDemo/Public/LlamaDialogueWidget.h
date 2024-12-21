@@ -20,7 +20,7 @@ class DIALOGUEDEMO_API ULlamaDialogueWidget : public UUserWidget
 
 public:
 	
-	FLlamaInferenceTask* InferenceTask;
+	std::string Prompt;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Llama Dialogue")
 	FString Content;
@@ -45,12 +45,23 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Game Performance")
 	void SetTargetInferenceSpeed(const float Speed);
 
-	UFUNCTION(BlueprintCallable, Category="Scheduler")
-	void SetSchedulerState(const int State);
+	UFUNCTION(BlueprintCallable, Category="Game Performance")
+	void SetTargetFPS(const float FPS);
+
+	UFUNCTION(BlueprintCallable, Category="ObjectManagement")
+	void AddObjects(int NumberOfCopies, UStaticMesh* StaticMesh);
+
+	UFUNCTION(BlueprintCallable, Category="Llama Dialogue")
+	void SetSkipDepth(const int SkipDepth);
 	
 private:
 	FString prompts[5];
 	
+	bool AutoSchedule;
+
+	TArray<UStaticMeshComponent*> AddedMeshComponents;
+	TArray<AActor*> AddedActors;
+	static int LastNumberOfCopies;
 };
 
 

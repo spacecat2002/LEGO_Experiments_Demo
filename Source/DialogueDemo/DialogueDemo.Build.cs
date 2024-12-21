@@ -18,10 +18,12 @@ public class DialogueDemo : ModuleRules
 			"UMG", 
 			"LlamaModel", 
 			"TaskDetector", 
-			"TaskScheduler"
+			"TaskScheduler",
+			"PerformanceDetector",
+			"NewLlamaModel"
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
+		PrivateDependencyModuleNames.AddRange(new string[] { "AITestSuite" });
 		
 		bEnableUndefinedIdentifierWarnings = false;
 
